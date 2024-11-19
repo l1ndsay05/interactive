@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <style>
+        p {
+            position: static;
+            padding-left: 10%;
+            padding-right: 10%;
+        }
+
+        .img{
+            display: inline-block;
+            margin-left: 10%;
+        }
+
+    </style>
+  </head>
+  <body>
+    <h1>Midterm Project Proposal</h1>
+    <p class="container">
+        Team Members: Lindsay Liu, Angela Cha, Selina Xu
+    </p>
+    <p class="container">
+        We, Selina Xu, Lindsay Liu, and Angela Cha, want to create an Among Us themed program that includes NPCs, pathfinding, and mini games. We will start with the game being single player and the other characters as NPCs. We will utilize arrays and classes to create the NPCs. In essence, this game will largely follow the same rules as Among Us, where a player is required to navigate a map like this one:
+    </p>
+    <img class="img"
+    src="https://forum.creative.gimkit.com/uploads/default/original/2X/b/b0edeb50429b21c435f26573fd84e1597262e16f.jpeg"
+    width="40%"
+    height="auto">
+    <p>
+        We will probably make a smaller version of the original map, having less rooms to go into. We would use the gif functions or sprites to make the map look more interesting or enticing. We will also make this in the style of old arcade games, where the characters and settings are pixelated tile-based artworks. We will either use open source characters, or potentially draw and create our own assets for characters and environments. PixelArt, a website that allows us to specifically create art in pixels, Adobe Photoshop and Illustrator are all resources we might access to secure our assets.
+
+        <br>
+        <br>
+        The player will coexist with a number of NPCs, who will be programmed to randomly roam around the map’s allocated paths. An NPC will be chosen randomly to be the imposter, with its character sprite also being randomized. The player will have to complete a set of tasks without being eaten by the imposter to win. Should the player be eaten by the imposter, the game is over and the player is given the option to start over. In order for this to work, we project that we will need to incorporate path finding or barrier navigation code to prevent the player and all NPCs from going wherever they want on the map. We will also require sprite sheets of Among Us characters in order to animate walking animations into the game.
+        <br>
+    </p>
+    <img class="img"
+    src="https://m.media-amazon.com/images/I/51BB5GqHm2L._AC_UF894,1000_QL80_.jpg"
+    width="30%"
+    height="auto"
+    alt="among us characters">
+    <img id="amongUs" class="img"
+    src="https://cdn.pixabay.com/photo/2021/03/02/17/26/pixel-6063246_640.png" 
+    alt="pixelated among us character"
+    width="30%"
+    height="auto">
+
+    <p>
+        The tasks the player has to complete will vary each playthrough, with a current projected amount of three tasks per game. Each task will be some kind of simple mini game, such as a match or memory game, a typing game, or a minion fall game (where the player needs to run around the screen to avoid falling obstacles). The variations can come in two forms, either the goal to complete the game is different, or the mini game itself is different altogether. Specific parts of the map will serve as the spot where tasks can be activated. They will be visually indicated by a small image of the task, or maybe a light bulb of sorts that will light up once the task is completed. They can start by holding a state of 0, to signify that the task has yet to be started, and should the player complete the task, they will change to a state of 1 and trigger an advancement in the game. When all of the tasks have been completed, or all of the ‘checkpoints’ hold a state of 1, the game will be won. 
+
+    </p>
+
+    
+    <img class="img"
+    src="https://i0.wp.com/mcusercontent.com/21ab45285a43248c52473f8e6/images/da4b7c04-027b-4033-a2d3-68c372c94299.jpeg?ssl=1"
+    width="20%"
+    height="auto">
+    <img class="img"
+    src="assets/minionfall.png"
+    width="20%"
+    height="auto"
+    alt="minion fall">
+    <img class="img"
+    src="assets/typingGame.png"
+    width="20%"
+    height="auto"
+    alt="typing game">
+
+    <p>
+        Current questions we have for our proposed project is how we are going to program the player being eaten. Should the player be killed everytime they walk past the imposter, the game will be too difficult to win. Some kind of probability must be involved whenever the player comes within a certain distance of the imposter. Furthermore, we would also want to learn how to animate the scene of the imposter killing the player. We are also still brainstorming the different types of tasks we can incorporate into the game, as well as how many tasks we can realistically make. 
+    </p>
+</body>
+</html>

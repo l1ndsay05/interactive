@@ -1,0 +1,179 @@
+<!doctype html>
+<html>
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/addons/p5.sound.min.js"></script>
+    <script>
+      //css and button to go back to some screens
+      let sketchStart = function(p) {
+        let bground, frog1, frog2, frog3;
+        let confirmButton;
+        let selectedFrog = null;
+        let myCanvasElement;
+        let startScreenActive = true;
+        
+        // Preload background and frog images
+        p.preload = function() {
+          bground = p.loadImage("./images/bg.png");
+          frog1 = p.loadImage("./images/frog.png");
+          frog2 = p.loadImage("./images/frog2.png");
+          frog3 = p.loadImage("./images/frogSleepy.png");
+        }
+
+        // Setup canvas and confirm button
+        p.setup = function() {
+          myCanvasElement = p.createCanvas(600, 500);
+          p.background(bground);
+
+          let startButton = p.createButton("Start")
+          startButton.size(200, 100)
+          startButton.position(p.width/2 - 100, p.height/2)
+          startButton.style("font-size", "48px");
+          
+          startButton.mousePressed(function() {
+            startButton.hide();  // Hide the start button
+            loadFrogChoose();    // Proceed to the next part of the game
+          });
+          // Create the Confirm button and hide it initially
+          confirmButton = p.createButton('Confirm Selection');
+          confirmButton.position(p.width / 2 - 60, p.height / 2);
+          confirmButton.hide();
+          // Once confirm button is clicked
+          //something weird is happening here - frog can still be selected while playing game???
+          confirmButton.mousePressed(function() {
+            if (startScreenActive == false) {
+              return;
+            }
+
+            p.clear();
+            confirmButton.hide();
+            localStorage.setItem('selectedFrog', selectedFrog);
+            console.log("You have selected frog " + selectedFrog);
+            document.querySelector("#sketch-container").classList.remove("hidden");
+            myCanvasElement.elt.style.display = 'none';
+            startScreenActive = false;
+          });
+        }
+
+        function loadFrogChoose(){
+          //startButton.hide();
+          p.textAlign(p.CENTER);
+          p.textSize(28);
+          p.text("Choose your frog:", p.width / 2, 100);
+
+          // Drawing frogs
+          p.image(frog1, 50, 330);
+          p.image(frog2, 220, 330);
+          p.image(frog3, 400, 330);
+        // Detect frog selection
+          p.mousePressed = function() {
+            if (startScreenActive == false) {
+              return;
+            }
+
+            // Check if frog1 is clicked
+            if (p.mouseX > 50 && p.mouseX < 50 + frog1.width && p.mouseY > 330 && p.mouseY < 330 + frog1.height) {
+              chooseFrog(1);
+            }
+            // Check if frog2 is clicked
+            else if (p.mouseX > 220 && p.mouseX < 220 + frog2.width && p.mouseY > 330 && p.mouseY < 330 + frog2.height) {
+              chooseFrog(2);
+            }
+            // Check if frog3 is clicked
+            else if (p.mouseX > 400 && p.mouseX < 400 + frog3.width && p.mouseY > 330 && p.mouseY < 330 + frog3.height) {
+              chooseFrog(3);
+            }
+          }
+
+          // Choose frog and show the confirm button
+          function chooseFrog(frogNum) {
+            selectedFrog = frogNum;
+            confirmButton.show();
+
+            if (frogNum === 1) {
+              console.log("You chose the first frog!");
+            } else if (frogNum === 2) {
+              console.log("You chose the second frog!");
+            } else if (frogNum === 3) {
+              console.log("You chose the third frog!");
+            }
+
+            window.localStorage.setItem('selectedFrog', frogNum);
+
+            startGame();
+          }
+        }
+      }
+
+    </script>
+    <style type="text/css">
+      body{
+        background-color: #FFE4C4;
+      }
+      .hidden{
+        display:none;
+      }
+      #game-container{
+        position: absolute;
+        top: 50%;
+        left: 60%;
+        transform: translate(-50%, -50%);
+      }
+
+      #sketch-container {
+        position: absolute;
+        top: 50%;
+        left: 60%;
+        transform: translate(-50%, -50%);
+      }
+
+/* not very responsive */
+      #instruct-container{
+        position: fixed;
+        top: 200px;
+        left: 50px;
+        width: 400px;
+
+      }
+      h1 {
+        position: absolute;
+        left: 10%;
+        top: 15%;
+
+      }
+
+    </style>
+  </head>
+  <body>
+    <h1>Frog Jump</h1>
+    <p id="instruct-container">Instructions: <br>
+      1. This game uses WASD to move the frog. Click W to jump, A to move left, and D to move right.<br>
+      2. Collect flies to earn points<br>
+      3. Jump above the blocks to stay alive! It's ok if you die, you have 3 lives!<br>
+      <br>
+      I took heavy inspiration from the no wifi dinosour game, 
+      where the objective is to jump over obstacles to stay alive. 
+      I'm not too sure why I chose a frog, but I thought it would be cute, 
+      so I modelled the background to fit the frog style.
+      <br>
+      <br>
+      In the future, I would have implemented all game functions on a single screen instead of 2 to make it simpler and easier to code, but have a separate canvas as a background. If I had more time, I would also like to implement functions that allows the player to go back to the home screen, or to make the fly more interesting by letting it fly up and down. I would probably use sin or cosine maybe perlin noise to make it fly up and down.
+         
+    </p>
+    
+    <!-- Container for the start screen -->
+    <div id="game-container">
+      <div class="hidden" id="sketch-container"></div>
+
+    </div>
+
+    <script>
+      // Launch the start screen sketch into the container
+      new p5(sketchStart, 'game-container');
+      
+    </script>
+    <script src="sketchGame.js"></script>
+
+  </body>
+</html>
+

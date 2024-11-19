@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space Runner</title>
+    <script src="../js/p5.min.js"></script>
+    <script src="../js/addons/p5.sound.min.js"></script>
+    <style>
+    body {
+        display: flex;
+        text-align: center;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh; 
+        margin: 0;
+        font-family: Arial, sans-serif; 
+        color: white;
+        background-image: url('./graphics/spacebg.jpg'); 
+    }
+
+    .button-container {
+        text-align: center;
+    }
+
+    .button-container button {
+        width: 100px;
+        padding: 5px 0;
+        font-weight: bold;
+        margin-bottom: 1em;
+        color: white;
+        border: 2px solid rgb(255, 255, 255);
+        border-radius: 25px;
+        background-color: transparent; /* Makes button background transparent */
+        cursor: pointer;
+    }
+
+    .button-container button:hover {
+        background-color: rgba(255, 255, 255, 0.5); /* Slight background on hover */
+    }
+
+    canvas{
+        border: 3px solid white;
+        border-radius: 15px;
+    }  
+    </style>
+</head>
+<body>
+    <h1>Typing Game!</h1>
+    <p>To win the game, type in the word that shows up on screen.
+        <br>Get score to 10 points!</p>
+    <div class="button-container">
+        <button id="startButton">Start Game</button>
+        <button id="restartButton" style="display: none;">Click to Restart</button>
+        <a href="index.html">
+            <button id="returnButton" style="display: none;">Return to the Skeld</button>
+        </a>
+    </div>
+    <script src="typingGame.js"></script>
+</body>
+</html>

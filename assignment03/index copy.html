@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.10.0/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/addons/p5.sound.min.js"></script>
+    <script>
+      let sketchStart = function(p) {
+        let bg;
+        //start screen canvas
+        p.preload = function(){
+          bg = p.loadImage("./images/bg.png")
+        }
+        
+        p.setup = function(){
+          p.createCanvas(600, 500);
+          p.background(bg);
+          let startButton = p.createButton("Start")
+          startButton.size(200, 100)
+          startButton.position(p.width/2 - 100, p.height/2)
+          startButton.style("font-size", "48px");
+          startButton.mousePressed(loadGameSketch); 
+        }
+
+        p.draw = function(){}
+
+
+      }
+      function loadGameSketch(){
+        let script = document.createElement('script')
+        script.src = 'sketchGame.js'
+        document.body.appendChild(script);
+
+        let sketchContainer = document.getElementById('sketch-container');
+        sketchContainer.style.display = 'none'; 
+      }
+  
+
+    </script>
+    <style>
+      #sketch-container {
+              display: block; /* Start screen visible by default */
+            }
+
+    </style>
+  </head>
+  <body>
+    <h1>This is some heading</h1>
+    <p>this is some text</p>
+     <!-- Container for the start screen -->
+     <div id="sketch-container"></div>
+
+     <script>
+       // Launch the start screen sketch into the container
+       new p5(sketchStart, 'sketch-container');
+     </script>
+
+  </body>
+</html>
+
+<!--
+pac man mario kart inspo
+kind of like the little dinosour game when theres no wifi
+
+Your program should have a "start" screen that lets you select a level of 
+difficulty for your game. The game should be in "pause" mode until you 
+select your difficulty level.
+
+
+Your program will need some kind of HTML interface that is used by your game. This could include buttons, sliders, text boxes, etc. The interface should be an important part of the game and not an "afterthought" (e.g. adding in a "pause" button is not enough).  Think of other kinds of input that the user could supply that would make the game more interesting & meaningful.
+  idea: mute button
+  scale: of the box size
+
+Your program needs to implement persistent storage through the use of the localStorage API. This means that your game should 'remember' some value(s) between plays. For example, you could keep track of the total # of points the user has earned in the game, or the total # of games played.
+  idea: high score
+
+Your program should have a "start" screen that lets you select a level of difficulty for your game. The game should be in "pause" mode until you select your difficulty level.
+  idea: 3 levels depending on the speed of block
+
+You will need to develop a fully styled HTML page for this project (e.g. you can't just pop a canvas on the page at the top right and call it a day!) - a fully styled page includes a background color/image, some text/directions on how to play the game, and the game placed in a purposeful way (e.g. in a container, centered on the page, etc)
+
+Your game should include a second canvas that is embedded on the same HTML page. You can use any technique that we covered (iframe or p5 "instance" mode.) What you choose to do with this canvas is up to you, but it must be non-trivial and serve some purpose in your game.
+For example, having a second canvas that serves as the background to your game is a great idea, but if the code is simply a series of ellipses that get randomly generated it will not fulfill this criteria.
+A better use of this technique would be some kind of second canvas that keeps track of something important your gameplay. For example, you could create a canvas that displays achievements that the user has earned, or items that the user has acquired during the the game. You could then click or interact with these items to trigger some kind of effect on the main game.
+If you use p5's "instance mode" please remember that there is a bug with the sound library that will cause an error to occur in some browsers. To get around this please refer to the workaround code I made available in the Github repository from Day 07, or use the iframe technique.
+  idea: finish game button leads to new page thtat shows stats
+-->

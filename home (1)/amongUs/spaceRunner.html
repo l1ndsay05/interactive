@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space Runner</title>
+    <script src="../js/p5.min.js"></script>
+    <script src="../js/addons/p5.sound.min.js"></script>
+    <script src="spaceRunner.js"></script>
+    <style>
+        body{
+            background-image: url('./graphics/spacebg.jpg');
+            display: flex;
+            text-align: center;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        h1, p{
+            color: white;
+            font-family: monospace;
+        }
+
+        canvas{
+            border: 3px solid white;
+            margin: auto;
+            display: block;
+            border-radius: 15px;
+        }
+
+        .button{
+            text-align: center;
+            width: 120px;
+            padding: 5px 0;
+            text-align: center;
+            border-radius: 25px;
+            font-weight: bold;
+            border: 2px solid purple;
+            background: transparent;
+            cursor: pointer;
+            color: white;
+        }
+
+        .hidden{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Space Runner!</h1>
+    <p>Save 10 space doggos from the aliens without getting caught!</p>
+    <p>Press SPACEBAR to jump</p>
+</body>
+</html>
