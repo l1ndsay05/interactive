@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en-us">
+
+<head>
+    <meta charset="UTF-8">
+
+    <!-- p5 core library -->
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.11.1/lib/p5.min.js"></script>
+
+    <!-- A-Frame core library -->
+    <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+
+    <!-- AFrameP5 library -->
+    <script src="https://craignyu.github.io/aframep5/libraries/aframep5-v2.3.js"></script>
+
+    <!-- Your p5 Sketch -->
+    <script src="sketch.js"></script>
+
+    <!-- custom styles -->
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- container to hold our VR scene - make sure to give this element an ID of 'VRScene' -->
+    <a-scene id="VRScene">
+
+        <a-assets id="VRAssets">
+            <img src="./images/bgimg.jpeg" id="sky1">
+            <img src="./images/metal.jpg" id="metal" >
+            <a-asset-item id="flower" src="./images/low_poly_flower/scene.gltf"></a-asset-item>
+
+         </a-assets>
+
+
+    </a-scene>
+
+</body>
+
+</html>
